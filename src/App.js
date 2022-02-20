@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Button from "./components/Button";
 
 function App() {
-  const [text, setText] = useState([]); //to type text in inputbox
+  const [text, setText] = useState(); //to type text in inputbox
 
-  const [task, setTask] = useState([]); //to store the submitted data
+  const [task, setTask] = useState([]); //to store the submitted data in an array
 
   const changeText = (e) => {
     //console.log(e);
@@ -40,6 +40,21 @@ function App() {
             </div>
             <div className="flex justify-center">
               <Button btn="Add Task" />
+            </div>
+
+            <div className="">
+              {task.map((value) => {
+                return (
+                  <div>
+                    <>
+                      <div className="columns-2">{value}</div>
+                      <div className="columns-2">
+                        <button>X</button>
+                      </div>
+                    </>
+                  </div>
+                );
+              })}
             </div>
           </form>
         </div>
