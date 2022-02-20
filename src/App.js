@@ -47,9 +47,9 @@ function App() {
                 return (
                   <div>
                     <>
-                      <div className="columns-2">{value}</div>
-                      <div className="columns-2">
-                        <button>X</button>
+                      <div className="columns-1">{value}</div>
+                      <div className="columns-1">
+                        <Button btn="X" />
                       </div>
                     </>
                   </div>
