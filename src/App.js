@@ -2,12 +2,21 @@ import React, { useState } from "react";
 import Button from "./components/Button";
 
 function App() {
+  const [text, setText] = useState([]); //to type text in inputbox
+
   const [task, setTask] = useState([]); //to store the submitted data
+
+  const changeText = (e) => {
+    //console.log(e);
+    setText(e.target.value);
+  };
 
   const submitHandler = (e) => {
     console.log("submitted");
     e.preventDefault();
-    setTask([...task, task]); //storing in an array without losing previous data
+    setTask([...task, text]); //storing in an array without losing previous data
+
+    setText("");
   };
 
   return (
@@ -23,6 +32,8 @@ function App() {
             <div className="m-10">
               <input
                 type="text"
+                value={text}
+                onChange={changeText}
                 placeholder="type here"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-blue-100 focus:shadow-sm"
               />
