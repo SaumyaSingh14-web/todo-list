@@ -19,6 +19,14 @@ function App() {
     setText("");
   };
 
+  const removeTask = () => {
+    const finalData = task.filter((curEle, index) => {
+      return index !== a;
+    });
+
+    setTask(finalData);
+  };
+
   return (
     <div className="App bg-gray-100">
       <div className="text-gray-900 text-center p-14 font-extrabold">
@@ -38,6 +46,7 @@ function App() {
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-blue-100 focus:shadow-sm"
               />
             </div>
+
             <div className="flex justify-center">
               <Button btn="Add Task" />
             </div>
@@ -47,9 +56,9 @@ function App() {
                 return (
                   <div>
                     <>
-                      <div className="columns-1">{value}</div>
-                      <div className="columns-1">
-                        <Button btn="X" />
+                      <div className="columns-6 my-2">{value}</div>
+                      <div className="columns-6 my-2">
+                        <button onClick={() => removeTask(index)}> X </button>
                       </div>
                     </>
                   </div>
