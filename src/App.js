@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Button from "./components/Button";
 
+const getLocalItem = () => {
+  let list = localStorage.getItem("lists");
+  console.log(list);
+  if (list) {
+    return JSON.parse(list);
+  } else {
+    return [];
+  }
+};
+
 function App() {
   const [text, setText] = useState(); //to type text in inputbox
 
-  const [task, setTask] = useState([]); //to store the submitted data in an array
+  const [task, setTask] = useState(getLocalItem()); //to store the submitted data in an array
 
   const changeText = (e) => {
     //console.log(e);
@@ -28,7 +38,7 @@ function App() {
   };
 
   useEffect(() => {
-    localStorage.setItem("list", JSON.stringify(task));
+    localStorage.setItem("lists", JSON.stringify(task));
   }, [task]);
 
   return (
@@ -60,7 +70,9 @@ function App() {
                 return (
                   <div>
                     <>
-                      <div className="columns-6 my-2">{value}</div>
+                      <div className="columns-6 my-2" key={index}>
+                        {value}
+                      </div>
                       <div className="columns-6 my-2">
                         <button onClick={() => removeTask(index)}> X </button>
                       </div>
