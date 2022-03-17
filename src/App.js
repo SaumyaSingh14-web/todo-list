@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./components/Button";
 
 function App() {
@@ -19,13 +19,17 @@ function App() {
     setText("");
   };
 
-  const removeTask = () => {
+  const removeTask = (a) => {
     const finalData = task.filter((curEle, index) => {
       return index !== a;
     });
 
     setTask(finalData);
   };
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(task));
+  }, [task]);
 
   return (
     <div className="App bg-gray-100">
@@ -52,7 +56,7 @@ function App() {
             </div>
 
             <div className="">
-              {task.map((value) => {
+              {task.map((value, index) => {
                 return (
                   <div>
                     <>
