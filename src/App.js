@@ -22,11 +22,13 @@ function App() {
   };
 
   const submitHandler = (e) => {
-    console.log("submitted");
     e.preventDefault();
-    setTask([...task, text]); //storing in an array without losing previous data
+    if (text) {
+      console.log("submitted");
+      setTask([...task, text]); //storing in an array without losing previous data
 
-    setText("");
+      setText("");
+    }
   };
 
   const removeTask = (a) => {
@@ -57,7 +59,7 @@ function App() {
                 value={text}
                 onChange={changeText}
                 placeholder="type here"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-blue-100 focus:shadow-sm"
+                className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-blue-100 focus:shadow-sm"
               />
             </div>
 
@@ -65,18 +67,14 @@ function App() {
               <Button btn="Add Task" />
             </div>
 
-            <div className="">
+            <div>
               {task.map((value, index) => {
                 return (
-                  <div>
-                    <>
-                      <div className="columns-6 my-2" key={index}>
-                        {value}
-                      </div>
-                      <div className="columns-6 my-2">
-                        <button onClick={() => removeTask(index)}> X </button>
-                      </div>
-                    </>
+                  <div key={index}>
+                    <div className="columns-6 my-2">{value}</div>
+                    <div className="columns-6 my-2">
+                      <button onClick={() => removeTask(index)}> X </button>
+                    </div>
                   </div>
                 );
               })}
