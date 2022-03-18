@@ -59,7 +59,7 @@ function App() {
                 value={text}
                 onChange={changeText}
                 placeholder="type here"
-                className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-blue-100 focus:shadow-sm"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-blue-100 focus:shadow-sm"
               />
             </div>
 
