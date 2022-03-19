@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "./components/Button";
+import { TiDeleteOutline } from "react-icons/ti";
 
 const getLocalItem = () => {
   let list = localStorage.getItem("lists");
@@ -67,16 +68,19 @@ function App() {
               <Button btn="Add Task" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5 justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5 justify-items-center font-light">
               {task.map((value, index) => {
                 return (
                   <div
                     key={index}
-                    className="mx-3 text-sm space-y-2 bg-red-100 p-2 rounded-xl"
+                    className="mx-3 text-sm space-y-2 bg-gray-200 p-2 rounded-md"
                   >
                     <div>{value}</div>
                     <div>
-                      <button onClick={() => removeTask(index)}> X </button>
+                      <button onClick={() => removeTask(index)}>
+                        {" "}
+                        <TiDeleteOutline />{" "}
+                      </button>
                     </div>
                   </div>
                 );
