@@ -44,8 +44,8 @@ function App() {
   }, [task]);
 
   return (
-    <div className="App bg-gray-100">
-      <div className="text-gray-900 text-center p-14 font-extrabold">
+    <div className="bg-gray-100">
+      <div className="text-gray-900 text-center p-5 font-extrabold">
         TODO-List
         <div className="flex justify-center mt-4 pb-5 ml-3">
           <form
@@ -67,12 +67,15 @@ function App() {
               <Button btn="Add Task" />
             </div>
 
-            <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5 justify-items-center">
               {task.map((value, index) => {
                 return (
-                  <div key={index}>
-                    <div className="columns-6 my-2">{value}</div>
-                    <div className="columns-6 my-2">
+                  <div
+                    key={index}
+                    className="mx-3 text-sm space-y-2 bg-red-100 p-2 rounded-xl"
+                  >
+                    <div>{value}</div>
+                    <div>
                       <button onClick={() => removeTask(index)}> X </button>
                     </div>
                   </div>
